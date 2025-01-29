@@ -1,16 +1,18 @@
 public class Knoten <T> {
-    private T data;
+    private T Kontent;
     private Knoten nachfolger;
 
-    public void setNachfolger(Knoten pKnoten) {
-        nachfolger = pKnoten;
+    public Knoten(T pKontent){
+    Kontent=pKontent;
+    nachfolger=null;
     }
+    public void setNachfolger(Knoten pKnoten) {
+        this.nachfolger = pKnoten;
+    }
+
     public Knoten getNachfolger() {
         return nachfolger;
     }
-    public setKundeName(){
-        return ;
 
-    }
-
+    public T getKontent(){return Kontent;}
 }

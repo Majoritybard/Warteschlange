@@ -1,31 +1,32 @@
-public class Warteschlange {
-    private Kunde erster;
+public class Warteschlange <T> {
+    private Knoten erster;
 
     public Warteschlange(){
 
     }
 
-    public Kunde gibErsten(){
-        return erster;
+    public T gibErsten(){
+        return (T) erster.getKontent();
     }
 
     public void entfernen() {
-        Kunde aktuellerKunde = erster ;
+        Knoten aktuellerKunde = erster ;
         if( erster!= null){
             erster = aktuellerKunde.getNachfolger();
         }
     }
 
-    public void einfuegen(Kunde pKunde){
-        Kunde aktuellerKunde = erster;
+    public void einfuegen(T pKontent){
+        Knoten ContentType= new Knoten<>(pKontent);
+
         if (erster == null){
-            erster = pKunde;
+            erster = ContentType;
         }
         else{
-            while(aktuellerKunde.getNachfolger() != null) {
-                aktuellerKunde = aktuellerKunde.getNachfolger();
+            while(ContentType.getNachfolger() != null) {
+                ContentType = ContentType.getNachfolger();
             }
-            aktuellerKunde.setNachfolger(pKunde);
+            ContentType.setNachfolger(ContentType);
         }
     }
 }
