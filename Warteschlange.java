@@ -17,16 +17,16 @@ public class Warteschlange <T> {
     }
 
     public void einfuegen(T pKontent){
-        Knoten ContentType= new Knoten<>(pKontent);
+        Knoten ContentType=erster;
 
         if (erster == null){
-            erster = ContentType;
+            erster = new Knoten<>(pKontent);
         }
         else{
             while(ContentType.getNachfolger() != null) {
                 ContentType = ContentType.getNachfolger();
             }
-            ContentType.setNachfolger(ContentType);
+            ContentType.setNachfolger(new Knoten<>(pKontent));
         }
     }
 }
