@@ -1,5 +1,6 @@
 public class Warteschlange <T> {
     private Knoten erster;
+    private Knoten letzter;
 
     public Warteschlange(){
 
@@ -21,12 +22,14 @@ public class Warteschlange <T> {
 
         if (erster == null){
             erster = new Knoten<>(pKontent);
+            letzter=erster;
         }
         else{
             while(ContentType.getNachfolger() != null) {
                 ContentType = ContentType.getNachfolger();
             }
             ContentType.setNachfolger(new Knoten<>(pKontent));
+            letzter=ContentType;
         }
     }
 }
