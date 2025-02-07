@@ -23,6 +23,7 @@ public class Liste <T> {
         if (Erster == null){
             Erster = new KnotenListe<>(pKontent);
             Letzter=Erster;
+            Aktueller=Letzter;
         }
         else{
             while(ContentType.getNachfolger() != null) {
@@ -34,6 +35,11 @@ public class Liste <T> {
     }
     public void insert(T pContent){
 
+     if (hasAccess()==true){
+         String Speicher = Aktueller.toString();
+         Aktueller.toFirst
+         while (Speicher != Aktueller.getNachfolger()){}
+     }
 
     }
    public boolean isEmpty(){
@@ -44,13 +50,20 @@ public class Liste <T> {
          return false;
      }
    }
+   public boolean hasAccess(){
+     if (Aktueller == null){
+         return false;
+     } else  {
+         return true;
+     }
+   }
 
     public void next(){
-  Aktueller=Aktueller.getNext();
+    Aktueller= Aktueller.getNachfolger();
  }
 
     public T getNext(){
-     return next;
+     return (T) next;
 
     }
     public void toFirst(){
@@ -59,11 +72,5 @@ public class Liste <T> {
     public void  toLast(){
      Aktueller=Letzter;
     }
-    public T getContent() {
-     return T;
 
-    }
-    public  T setContent(T pContent){
-     this.T=pContent;
-    }
 }
