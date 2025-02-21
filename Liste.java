@@ -2,16 +2,16 @@
 public class Liste <T> {
 
     // 'Erster' verweist auf das erste Element der Liste
-    public KnotenListe <T> Erster;
+    private KnotenListe <T> Erster;
 
     // 'Letzter' verweist auf das letzte Element der Liste
-    public KnotenListe <T> Letzter;
+    private KnotenListe <T> Letzter;
 
     // 'Aktueller' verweist auf das aktuell ausgewählte Element (z. B. für Iteration)
-    public KnotenListe <T> Aktueller;
+    private KnotenListe <T> Aktueller;
 
     // 'next' ist ein zusätzliches Feld, das aktuell jedoch nicht genutzt wird
-    public KnotenListe next;
+    private KnotenListe next;
 
     // Konstruktor für die Liste. Initialisiert alle Felder mit 'null'.
     public Liste() {
@@ -65,11 +65,11 @@ public class Liste <T> {
                 Erster = neuerKnoten;               // Der neue Knoten wird nun der erste Knoten
             } else {
                 // Der aktuelle Knoten ist nicht der erste, also müssen wir den vorherigen Knoten finden
-                KnotenListe<T> vorherigerKnoten = Erster;
-
+                KnotenListe<T> vorherigerKnoten = Aktueller;
+                Aktueller=Erster;
                 // Durch die Liste iterieren, bis wir den Knoten vor dem aktuellen Knoten finden
-                while (vorherigerKnoten.getNachfolger() != Aktueller) {
-                    vorherigerKnoten = vorherigerKnoten.getNachfolger();
+                while (Aktueller.getNachfolger()!=vorherigerKnoten) {
+                    Aktueller = Aktueller.getNachfolger();
                 }
 
                 // Der neue Knoten wird zwischen dem vorherigen Knoten und dem aktuellen Knoten eingefügt
@@ -94,12 +94,12 @@ public class Liste <T> {
     }
 
     // Setzt den 'Aktuellen' Knoten auf den nächsten Knoten der Liste
-    public void next() {
+    public void setNext() {
         Aktueller = Aktueller.getNachfolger();
     }
 
     // Gibt den Inhalt des 'next'-Knotens zurück (dies wird jedoch derzeit nicht korrekt genutzt)
-    public T getNext() {
+    private T getNext() {
         return (T) next;
     }
 
