@@ -6,7 +6,7 @@ public class Verwaltung {
 
     public static void main(String[] args) {
         new Verwaltung();
-        System.out.println("Herzlich willkommen zu Zeichenketten verschluesselerer!");
+        System.out.println("Wilkommen zu Bucksstar!");
     }
 
     public Verwaltung() {
@@ -18,10 +18,9 @@ public class Verwaltung {
         Liste<Kunde> liste = new Liste<>();
 
         while (true) {
-            System.out.println("== HAUPTMENÜ ==");
-            System.out.println("[1] Warteschlange verwalten");
-            System.out.println("[2] Stack verwalten");
-            System.out.println("[3] Liste verwalten");
+            System.out.println("[1] Bestellen");
+            System.out.println("[2] Kaffeliste anzeigen");
+            System.out.println("[3] Kaffeliste auffüllen");
             System.out.println("[4] Beenden");
             int hauptOption = scanner.nextInt();
             scanner.nextLine(); // Scanner leeren
@@ -31,11 +30,17 @@ public class Verwaltung {
                     verwalteWarteschlange(warteschlange);
                     break;
                 case 2:
-                    verwalteStack(stack);
-                    break;
+                    ;
                 case 3:
-                    verwalteListe(liste);
-                    break;
+                    String Kaffee = "";
+                    for (int i=0; i<4;i++){
+
+                        if (i == 0){
+                        Kaffee="Iced Caramell";
+                        }
+
+                        liste.append(Kaffee);
+                    }
                 case 4:
                     System.out.println("Programm beendet.");
                     return; // Programm beenden
@@ -49,47 +54,11 @@ public class Verwaltung {
     // Warteschlangen-Optionen
     private void verwalteWarteschlange(Warteschlange<Kunde> warteschlange) {
         while (true) {
-            System.out.println("== WARTESCHLANGEN MENÜ ==");
-            System.out.println("[1] Hinzufügen zur Warteschlange");
-            System.out.println("[2] Manuell Hinzufügen zur Warteschlange");
-            System.out.println("[3] Entfernen aus der Warteschlange");
-            System.out.println("[4] Zeige Inhalt der Warteschlange");
-            System.out.println("[5] Zurück zum Hauptmenü");
-            int option = scanner.nextInt();
+            System.out.println("Namen Angeben");
+            String name = scanner.nextLine();
             scanner.nextLine(); // Scanner leeren
+            System.out.println("Welches Getränk möchtest du?");
 
-            switch (option) {
-                case 1:
-                    System.out.println("Wie viele Kunden willst du zur Warteschlange hinzufügen?");
-                    int numCustomers = scanner.nextInt();
-                    for (int i = 0; i < numCustomers; i++) {
-                        Kunde kunde = new Kunde("Kunde" + i);
-                        warteschlange.einfuegen(kunde);
-                    }
-                    break;
-                case 2:
-                    System.out.println("Namen des Kunden angeben, der zur Warteschlange hinzugefügt werden soll:");
-                    String name = scanner.nextLine();
-                    Kunde kundeM = new Kunde(name);
-                    warteschlange.einfuegen(kundeM);
-                    break;
-                case 3:
-
-                    warteschlange.entfernen();
-                    break;
-                case 4:
-                    Kunde hilfeWarteschlange = (Kunde) warteschlange.gibErsten();
-                    if (hilfeWarteschlange != null) {
-                        System.out.println("Erster Kunde in der Warteschlange: " + hilfeWarteschlange.getName());
-                    } else {
-                        System.out.println("Die Warteschlange ist leer.");
-                    }
-                    break;
-                case 5:
-                    return; // Zurück zum Hauptmenü
-                default:
-                    System.out.println("Ungültige Auswahl, bitte versuche es erneut.");
-                    break;
             }
         }
     }
@@ -135,14 +104,6 @@ public class Verwaltung {
     // Liste-Optionen
     private void verwalteListe(Liste<Kunde> liste) {
         while (true) {
-            System.out.println("== LISTE MENÜ ==");
-            System.out.println("[1] Hinzufügen zur Liste");
-            System.out.println("[2] Einfügen an der aktuellen Position");
-            System.out.println("[3] Entfernen aus der Liste");
-            System.out.println("[4] Zeige Inhalt der Liste");
-            System.out.println("[5] Zurück zum Hauptmenü");
-            int option = scanner.nextInt();
-            scanner.nextLine(); // Scanner leeren
 
             switch (option) {
                 case 1:
